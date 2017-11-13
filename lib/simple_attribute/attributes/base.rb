@@ -41,7 +41,7 @@ module SimpleAttribute
       # Get wrapper
       def wrapper
         wrapper = options.fetch :wrapper, nil
-        wrapper = SimpleAttribute.config.wrappers.send(:"#{wrapper}") unless wrapper.is_a? Hash
+        wrapper = SimpleAttribute.config.wrappers.try(:"#{wrapper}") unless wrapper.is_a? Hash
 
         Hash(wrapper).symbolize_keys
       end
