@@ -21,7 +21,7 @@ module SimpleAttribute
         label = value.try(label_method)
         title = value.try(title_method)
 
-        link_to label, record_path(value), html_options.merge(title: title)
+        link_to label, value, html_options.merge(title: title)
       end
     end
   end
