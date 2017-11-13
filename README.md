@@ -4,7 +4,7 @@ Attribute decorator support for ActiveRecord models.
 
 [![Gem Version](https://badge.fury.io/rb/simple_attribute.svg)](https://badge.fury.io/rb/simple_attribute)
 [![Build Status](https://travis-ci.org/hardpixel/simple-attribute.svg?branch=master)](https://travis-ci.org/hardpixel/simple-attribute)
-[![Maintainability](https://api.codeclimate.com/v1/badges/e459d91f56445e525a3d/maintainability)](https://codeclimate.com/github/hardpixel/simple-attribute/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/22f68b2e62b222e7efae/maintainability)](https://codeclimate.com/github/hardpixel/simple-attribute/maintainability)
 
 ## Installation
 
