@@ -4,13 +4,13 @@ require 'hashie'
 require 'simple_attribute/version'
 
 module SimpleAttribute
-  extend ActiveSupport::Concern
+  extend ActiveSupport::Autoload
 
   # Autoload base modules
-  autoload :Config,     'simple_attribute/config'
-  autoload :Builder,    'simple_attribute/builder'
-  autoload :Helpers,    'simple_attribute/helpers'
-  autoload :Attributes, 'simple_attribute/attributes'
+  autoload :Config
+  autoload :Builder
+  autoload :Attributes
+  autoload :Helpers
 
   # Set attr accessors
   mattr_accessor :config

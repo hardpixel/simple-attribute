@@ -107,7 +107,7 @@ module SimpleAttribute
 
       # Use view helpers if method is missing
       def method_missing(method, *args, &block)
-        self.respond_to?(method) ? super : @context.send(method, *args, &block)
+        @context.respond_to?(method) ? @context.send(method, *args, &block) : super
       end
     end
   end
