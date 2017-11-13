@@ -4,7 +4,8 @@ module SimpleAttribute
     def initialize(context, options={})
       @context  = context
       @options  = options
-      @renderer = options.fetch :as, :base
+      @record   = options[:record]
+      @renderer = options.fetch :as, guess_renderer
     end
 
     # Base attribute renderer
@@ -12,9 +13,13 @@ module SimpleAttribute
       'SimpleAttribute::Attributes::Base'.safe_constantize
     end
 
-    # Default attribute renderer
-    def default_renderer
-      base_renderer
+    # Guess renderer
+    def guess_renderer
+      attrib = @options[:attribute].to_s
+      column = @record.class.attribute_types[attrib]
+      column = column.class.name.demodulize.downcase.to_sym unless column.nil?
+
+      column || :base
     end
 
     # Find attribute renderer
@@ -23,7 +28,7 @@ module SimpleAttribute
       custom   = "#{renderer}Attribute".safe_constantize
       builtin  = "SimpleAttribute::Attributes::#{renderer}".safe_constantize if custom.nil?
 
-      custom || builtin || default_renderer
+      custom || builtin || base_renderer
     end
 
     # Render attribute
