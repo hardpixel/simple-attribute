@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Jonian Guveli']
   spec.email         = ['jonian@hardpixel.eu']
   spec.summary       = %q{Decorate ActiveRecord model attributes}
-  spec.description   = %q{Adds attribute decorator support for ActiveRecord models.}
+  spec.description   = %q{Attribute decorator support for ActiveRecord models.}
   spec.homepage      = 'https://github.com/hardpixel/simple-attribute'
   spec.license       = 'MIT'
   spec.files         = Dir['{lib/**/*,[A-Z]*}']
