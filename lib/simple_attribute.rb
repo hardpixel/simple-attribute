@@ -7,10 +7,10 @@ module SimpleAttribute
   extend ActiveSupport::Concern
 
   # Autoload base modules
-  autoload :Config,     'simple_attribute/config'
-  autoload :Builder,    'simple_attribute/builder'
-  autoload :Helpers,    'simple_attribute/helpers'
-  autoload :Attributes, 'simple_attribute/attributes'
+  autoload :Config,  'simple_attribute/config'
+  autoload :Builder, 'simple_attribute/builder'
+  autoload :Helpers, 'simple_attribute/helpers'
+  autoload :Loader,  'simple_attribute/loader'
 
   # Set attr accessors
   mattr_accessor :config

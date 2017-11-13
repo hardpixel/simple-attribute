@@ -1,5 +1,5 @@
 module SimpleAttribute
-  module Attributes
+  module Loader
     extend ActiveSupport::Concern
 
     # Autoload attribute decorators
