@@ -22,7 +22,8 @@ module SimpleAttribute
 
     # Check if file method
     def file_method?
-      @value.respond_to? :file
+      methods = [:mounted_as, :file?, :public_filename]
+      methods.any? { |m| @value.respond_to?(m) }
     end
 
     # Find file type
