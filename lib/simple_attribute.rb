@@ -1,4 +1,6 @@
+require 'active_support'
 require 'action_view'
+require 'hashie'
 require 'simple_attribute/version'
 
 module SimpleAttribute
