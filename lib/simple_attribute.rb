@@ -1,5 +1,6 @@
 require 'active_support'
 require 'action_view'
+require 'mini_mime'
 require 'hashie'
 require 'simple_attribute/version'
 
@@ -8,6 +9,7 @@ module SimpleAttribute
 
   # Autoload base modules
   autoload :Config
+  autoload :Matcher
   autoload :Builder
   autoload :Attributes
   autoload :Helpers

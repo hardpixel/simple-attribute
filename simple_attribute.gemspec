@@ -19,6 +19,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'actionview', '~> 5.0'
   spec.add_dependency 'hashie', '~> 3.5'
+  spec.add_dependency 'mini_mime', '~> 1.0'
   spec.add_development_dependency 'bundler', '~> 1.14'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'minitest', '~> 5.0'

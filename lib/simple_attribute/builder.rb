@@ -4,7 +4,6 @@ module SimpleAttribute
     def initialize(context, options={})
       @context  = context
       @options  = options
-      @record   = options[:record]
       @renderer = options.fetch :as, guess_renderer
     end
 
@@ -15,11 +14,10 @@ module SimpleAttribute
 
     # Guess renderer
     def guess_renderer
-      attrib = @options[:attribute].to_s
-      column = @record.class.attribute_types[attrib]
-      column = column.class.name.demodulize.downcase.to_sym unless column.nil?
+      record = @options[:record]
+      attrib = @options[:attribute]
 
-      column || :base
+      SimpleAttribute::Matcher.new(record, attrib).match
     end
 
     # Find attribute renderer
