@@ -28,7 +28,8 @@ module SimpleAttribute
 
     # Find file type
     def find_file_type
-      media_type = MiniMime.lookup_by_filename("#{@value}").content_type.split('/').first
+      media_type = MiniMime.lookup_by_filename("#{@value}")
+      media_type = media_type.content_type.split('/').first unless media_type.nil?
       available  = [:image, :video]
 
       available.find { |t| "#{t}" == media_type } || :file
