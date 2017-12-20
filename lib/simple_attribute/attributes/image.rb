@@ -6,18 +6,18 @@ module SimpleAttribute
         'image'
       end
 
-      # Get default value
-      def default_value
-        default = @options.fetch :default_value, nil
-        default = asset_path(default) rescue nil
-
-        default.nil? ? super : default
-      end
-
       # Render default value
       def render_default_value
-        if default_value.present?
-          image_tag default_value, html_options
+        @media_type ||= begin
+          media_type = MiniMime.lookup_by_filename("#{default_value}")
+          media_type.content_type.to_s.split('/').first
+        end
+
+        if 'image'.in?("#{@media_type}")
+          default_url = asset_url(default_value)
+          image_tag default_url, html_options
+        else
+          super
         end
       end
 
