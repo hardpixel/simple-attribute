@@ -8,7 +8,7 @@ module SimpleAttribute
 
       # Render attribute
       def render_attribute
-        video_tag value, html_options
+        content_tag :video, nil, html_options.reverse_merge(src: value)
       end
     end
   end
