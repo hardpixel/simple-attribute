@@ -15,7 +15,7 @@ module SimpleAttribute
 
         if 'image'.in?("#{@media_type}")
           default_url = asset_url(default_value)
-          image_tag default_url, html_options
+          content_tag :img, nil, html_options.reverse_merge(src: default_url)
         else
           super
         end
@@ -23,7 +23,7 @@ module SimpleAttribute
 
       # Render attribute
       def render_attribute
-        image_tag value, html_options
+        content_tag :img, nil, html_options.reverse_merge(src: value)
       end
     end
   end
