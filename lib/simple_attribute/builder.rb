@@ -22,9 +22,11 @@ module SimpleAttribute
 
     # Find attribute renderer
     def find_renderer(renderer)
-      renderer = "#{renderer}".classify
-      custom   = "#{renderer}Attribute".safe_constantize
-      builtin  = "SimpleAttribute::Attributes::#{renderer}".safe_constantize if custom.nil?
+      namespace = @options[:namespace]
+      renderer  = "#{renderer}".classify
+      custom    = "#{namespace}::#{renderer}Attribute".safe_constantize
+      custom    = "#{renderer}Attribute".safe_constantize if custom.nil?
+      builtin   = "SimpleAttribute::Attributes::#{renderer}".safe_constantize if custom.nil?
 
       custom || builtin || base_renderer
     end
