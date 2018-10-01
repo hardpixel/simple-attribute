@@ -14,5 +14,6 @@ module SimpleAttribute
     autoload :Association
     autoload :Enumeration
     autoload :File
+    autoload :Money
   end
 end

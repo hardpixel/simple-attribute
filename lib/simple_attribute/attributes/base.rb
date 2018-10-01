@@ -59,6 +59,11 @@ module SimpleAttribute
         "#{attribute}".dasherize
       end
 
+      # Attribute label method
+      def label_method
+        @options.fetch(:label, :to_s)
+      end
+
       # Attribute html options
       def html_options
         options.fetch :html, {}
@@ -82,7 +87,7 @@ module SimpleAttribute
 
       # Render attribute
       def render_attribute
-        "#{value || default_value}".html_safe
+        "#{value.try(label_method)}".html_safe
       end
 
       # Render attribute or default
