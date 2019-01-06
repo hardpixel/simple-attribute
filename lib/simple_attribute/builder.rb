@@ -1,7 +1,7 @@
 module SimpleAttribute
   class Builder
     # Initialize base attribute
-    def initialize(context, options={})
+    def initialize(context, options = {})
       @context  = context
       @options  = options
       @renderer = options.fetch :as, guess_renderer
