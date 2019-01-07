@@ -44,11 +44,11 @@ module SimpleAttribute
         name = self.class.name.gsub('Attribute', '')
         name = name.demodulize.underscore
 
-        name == 'base' ? 'string' : "#{name}".dasherize
+        name == 'base' ? 'string' : name.to_s.dasherize
       end
 
       def attribute_name
-        "#{attribute}".dasherize
+        attribute.to_s.dasherize
       end
 
       def label_method
@@ -74,7 +74,7 @@ module SimpleAttribute
       end
 
       def render_attribute
-        "#{value.try(label_method)}".html_safe
+        value.try(label_method).to_s.html_safe
       end
 
       def render_with_default

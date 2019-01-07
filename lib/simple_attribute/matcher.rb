@@ -10,7 +10,7 @@ module SimpleAttribute
     end
 
     def find_type
-      @type ||= @record.class.attribute_types["#{@attribute}"]
+      @type ||= @record.class.attribute_types[@attribute.to_s]
     end
 
     def find_type_name
@@ -23,11 +23,11 @@ module SimpleAttribute
     end
 
     def find_file_type
-      media_type = MiniMime.lookup_by_filename("#{@value}")
+      media_type = MiniMime.lookup_by_filename(@value.to_s)
       media_type = media_type.content_type.split('/').first unless media_type.nil?
       available  = [:image, :video]
 
-      available.find { |t| "#{t}" == media_type } || :file
+      available.find { |t| t.to_s == media_type } || :file
     end
 
     def match
