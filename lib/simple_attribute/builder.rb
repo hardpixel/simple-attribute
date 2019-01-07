@@ -1,18 +1,15 @@
 module SimpleAttribute
   class Builder
-    # Initialize base attribute
     def initialize(context, options = {})
       @context  = context
       @options  = options
       @renderer = options.fetch :as, guess_renderer
     end
 
-    # Base attribute renderer
     def base_renderer
       'SimpleAttribute::Attributes::Base'.safe_constantize
     end
 
-    # Guess renderer
     def guess_renderer
       record = @options[:record]
       attrib = @options[:attribute]
@@ -20,7 +17,6 @@ module SimpleAttribute
       SimpleAttribute::Matcher.new(record, attrib).match
     end
 
-    # Find attribute renderer
     def find_renderer(renderer)
       namespace = @options[:namespace]
       renderer  = "#{renderer}".classify
@@ -31,7 +27,6 @@ module SimpleAttribute
       custom || builtin || base_renderer
     end
 
-    # Render attribute
     def render_attribute(renderer)
       renderer = find_renderer renderer
       options  = @options.except(:as)
@@ -39,7 +34,6 @@ module SimpleAttribute
       renderer.new(@context, options).render
     end
 
-    # Render
     def render
       @rendered_attribute ||= begin
         html = Array(@renderer).map { |w| render_attribute(w) }

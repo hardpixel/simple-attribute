@@ -2,7 +2,6 @@ module SimpleAttribute
   module Attributes
     extend ActiveSupport::Autoload
 
-    # Autoload attribute decorators
     autoload :Base
     autoload :Avatar
     autoload :Image

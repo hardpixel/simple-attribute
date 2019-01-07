@@ -1,12 +1,10 @@
 module SimpleAttribute
   module Attributes
     class Image < Base
-      # Attribute name
       def attribute_name
         'image'
       end
 
-      # Render default value
       def render_default_value
         @media_type ||= begin
           media_type = MiniMime.lookup_by_filename("#{default_value}")
@@ -21,7 +19,6 @@ module SimpleAttribute
         end
       end
 
-      # Render attribute
       def render_attribute
         content_tag :img, nil, html_options.reverse_merge(src: value)
       end
