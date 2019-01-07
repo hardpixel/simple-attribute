@@ -5,18 +5,18 @@ module SimpleAttribute
         'image'
       end
 
-      def render_default_value
+      def media_type
         @media_type ||= begin
-          media_type = MiniMime.lookup_by_filename("#{default_value}")
-          media_type.content_type.to_s.split('/').first
+          type = MiniMime.lookup_by_filename(default_value.to_s)
+          type.content_type.to_s.split('/').first
         end
+      end
 
-        if 'image'.in?("#{@media_type}")
-          default_url = asset_url(default_value)
-          content_tag :img, nil, html_options.reverse_merge(src: default_url)
-        else
-          super
-        end
+      def render_default_value
+        return super unless 'image'.in?(media_type.to_s)
+
+        default_url = asset_url(default_value)
+        content_tag :img, nil, html_options.reverse_merge(src: default_url)
       end
 
       def render_attribute
