@@ -67,10 +67,10 @@ module SimpleAttribute
       end
 
       def render_default_value
-        if default_value.present?
-          @options[:wrapper] = nil
-          content_tag :span, default_value, class: "attribute-default-value"
-        end
+        return if default_value.blank?
+
+        @options[:wrapper] = nil
+        content_tag :span, default_value, class: 'attribute-default-value'
       end
 
       def render_attribute
